@@ -2,8 +2,6 @@ import { Client, GatewayIntentBits } from "discord.js";
 import { REST, Routes } from "discord.js";
 import "dotenv/config";
 
-
-
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -14,6 +12,15 @@ const client = new Client({
 client.on("messageCreate", (message) => {
   console.log(message.content);
   if (message.author.bot) return;
+  if (message.content.startsWith("create")) {
+    const url = message.content.split("create")[1];
+
+    //TODO write logic here for generating short url
+
+    return message.reply({
+      content: `Generating short url` + url,
+    });
+  }
   message.reply({
     content: "I am BOT",
   });
